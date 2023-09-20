@@ -19,7 +19,10 @@ const NavBar = () => {
         </div>
       </a>
       <div className="flex items-center">
-        <a href="#" className="text-slate-950 text-lg mr-8 hover:text-gray-400">
+        <a
+          href="https://github.com/AsherThomasBabu/exceltovcf"
+          className="text-slate-950 text-lg mr-8 hover:text-gray-400"
+        >
           Github
         </a>
         <a href="#" className="text-slate-950 text-lg hover:text-gray-400">
