@@ -153,15 +153,7 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
           </div>
         )}
       </div>
-
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-        onClick={handleGenerateClick}
-      >
-        Generate Customized Names
-      </button>
-
-      <div className="mt-4">
+      <div className="my-4">
         <h3 className="font-semibold">Preview:</h3>
         <ul>
           {customizedNames.slice(0, 3).map((name, index) => (
@@ -169,6 +161,12 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
           ))}
         </ul>
       </div>
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={handleGenerateClick}
+      >
+        Generate Contact Card
+      </button>
     </div>
   );
 };

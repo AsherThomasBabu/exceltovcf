@@ -23,7 +23,7 @@ const NavBar = () => {
           Github
         </a>
         <a href="#" className="text-slate-950 text-lg hover:text-gray-400">
-          About
+          How to use?
         </a>
       </div>
     </nav>
