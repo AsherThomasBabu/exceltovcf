@@ -1,7 +1,7 @@
 import AppRouter from "./AppRouter";
 import NavBar from "./components/NavBar/NavBar";
 import Popup from "./components/Popup/Popup";
-import { Analytics } from "@vercel/analytics";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
