@@ -1,9 +1,8 @@
 import AppRouter from "./AppRouter";
 import NavBar from "./components/NavBar/NavBar";
 import Popup from "./components/Popup/Popup";
-import { inject } from "@vercel/analytics";
-
-inject();
+import { Analytics } from "@vercel/analytics";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
   return (
@@ -13,6 +12,8 @@ function App() {
         <AppRouter />
         <Popup excelFilePath="src/assets/Sample Data.xlsx" />
       </div>
+      <SpeedInsights />
+      <Analytics />
     </>
   );
 }
