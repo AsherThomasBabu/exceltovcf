@@ -11,10 +11,10 @@ const TrackPageView = () => {
   const location = useLocation();
 
   useEffect(() => {
-    ReactGA.pageview(location.pathname + location.search); // Track page view
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
   }, [location]);
 
-  return null; // This component does not render anything
+  return null;
 };
 
 const AppRouter = () => {
