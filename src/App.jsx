@@ -10,7 +10,7 @@ function App() {
       <div className="container text-center mx-auto">
         <NavBar />
         <AppRouter />
-        <Popup excelFilePath="src/assets/Sample Data.xlsx" />
+        <Popup excelFilePath="public/Sample Data.xlsx" />
       </div>
       <SpeedInsights />
       <Analytics />
