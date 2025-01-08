@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import generateFile from "../../components/GenerateFile.jsx/GenerateFile";
+import ReactGA from "react-ga";
 
 const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
   const [addStaticText, setAddStaticText] = useState(false);
@@ -11,23 +12,58 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
   const [data, setData] = useState([...selectedData]);
 
   const handleAddStaticTextChange = (event) => {
-    setAddStaticText(event.target.checked);
+    const checked = event.target.checked;
+    setAddStaticText(checked);
+
+    ReactGA.event({
+      category: "Customization",
+      action: checked
+        ? "Enabled Static Text Customization"
+        : "Disabled Static Text Customization",
+    });
   };
 
   const handleStaticTextChange = (event) => {
     setStaticText(event.target.value);
+    ReactGA.event({
+      category: "Customization",
+      action: "Updated Static Text",
+      label: event.target.value,
+    });
   };
 
   const handleAddIncrementingNumberChange = (event) => {
-    setAddIncrementingNumber(event.target.checked);
+    const checked = event.target.checked;
+    setAddIncrementingNumber(checked);
+
+    ReactGA.event({
+      category: "Customization",
+      action: checked
+        ? "Enabled Incrementing Number Customization"
+        : "Disabled Incrementing Number Customization",
+    });
   };
 
   const handleStartingNumberChange = (event) => {
-    setStartingNumber(Number(event.target.value));
+    const value = Number(event.target.value);
+    setStartingNumber(value);
+
+    ReactGA.event({
+      category: "Customization",
+      action: "Updated Starting Number",
+      value: value,
+    });
   };
 
   const handleIncrementValueChange = (event) => {
-    setIncrementValue(Number(event.target.value));
+    const value = Number(event.target.value);
+    setIncrementValue(value);
+
+    ReactGA.event({
+      category: "Customization",
+      action: "Updated Increment Value",
+      value: value,
+    });
   };
 
   useEffect(() => {
@@ -65,7 +101,7 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
     incrementValue,
     staticText,
     selectedData,
-    selectedOptions, // Ensure useEffect updates when selectedData or selectedOptions changes
+    selectedOptions,
   ]);
 
   const handleGenerateClick = () => {
@@ -91,6 +127,14 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
 
       return updatedContact;
     });
+
+    // Track the download event
+    ReactGA.event({
+      category: "File Generation",
+      action: "Downloaded Customized Contact Data",
+      value: updatedData.length,
+    });
+
     generateFile(updatedData, selectedOptions); // Generate the file
   };
 

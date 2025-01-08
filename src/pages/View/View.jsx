@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import ContactNameCustomization from "../FileDownload/ContactNameCustomization";
+import ReactGA from "react-ga";
 
 const View = () => {
   const location = useLocation();
@@ -30,6 +31,11 @@ const View = () => {
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
+    ReactGA.event({
+      category: "Generate and Download",
+      action: "Generate VCF",
+      label: "Generate and Download VCF",
+    });
   };
 
   useEffect(() => {

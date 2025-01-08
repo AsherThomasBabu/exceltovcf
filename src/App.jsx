@@ -3,6 +3,9 @@ import NavBar from "./components/NavBar/NavBar";
 import Popup from "./components/Popup/Popup";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import ReactGA from 'react-ga';
+const TRACKING_ID = 'G-11WQRGZ5LP'; // Replace with your Google Analytics tracking ID
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as XLSX from "xlsx";
 import { Navigate } from "react-router-dom";
+import ReactGA from "react-ga";
 
 const Uploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -17,10 +18,21 @@ const Uploader = () => {
       setSelectedFile(file);
       setFileName(file.name);
       setFileSizeError(false);
+      ReactGA.event({
+        category: "File Upload",
+        action: "File Selected",
+        label: file.name,
+        value: file.size,
+      });
     } else {
       setSelectedFile(null);
       setFileName("");
       setFileSizeError(true);
+      ReactGA.event({
+        category: "File Upload",
+        action: "File Upload Error",
+        label: "File size exceeded limit",
+      });
     }
   };
 
@@ -44,6 +56,11 @@ const Uploader = () => {
         console.log(hasHeader);
         setFileData(jsonData);
         setFileSubmitted(true);
+        ReactGA.event({
+          category: "File Processing",
+          action: "File Submitted",
+          label: fileName,
+        });
       };
       fileReader.readAsArrayBuffer(selectedFile);
     }
@@ -60,10 +77,21 @@ const Uploader = () => {
       setSelectedFile(file);
       setFileName(file.name);
       setFileTypeError(false);
+      ReactGA.event({
+        category: "File Upload",
+        action: "File Dropped",
+        label: file.name,
+        value: file.size,
+      });
     } else {
       setSelectedFile(null);
       setFileName("");
       setFileTypeError(true);
+      ReactGA.event({
+        category: "File Upload",
+        action: "File Drop Error",
+        label: "Invalid file type or size",
+      });
     }
   };
 

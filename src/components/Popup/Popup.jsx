@@ -1,9 +1,18 @@
-// Popup.js
 import React, { useState } from "react";
 import Modal from "react-modal";
+import ReactGA from "react-ga"; // Import ReactGA for tracking
 
 const Popup = ({ excelFilePath }) => {
   const [isOpen, setIsOpen] = useState(true); // Open the modal by default
+
+  // Event handler for tracking the download button click
+  const handleDownloadClick = () => {
+    ReactGA.event({
+      category: "User Actions", // Event category
+      action: "Download Sample Excel", // Event action
+      label: "Popup Download Button", // Optional: event label to identify the button
+    });
+  };
 
   return (
     <Modal
@@ -28,6 +37,7 @@ const Popup = ({ excelFilePath }) => {
             href={excelFilePath}
             download
             className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+            onClick={handleDownloadClick} // Attach the event handler
           >
             Download Sample Excel
           </a>
