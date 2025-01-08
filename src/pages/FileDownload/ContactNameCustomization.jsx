@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import generateFile from "../../components/GenerateFile.jsx/GenerateFile";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
   const [addStaticText, setAddStaticText] = useState(false);

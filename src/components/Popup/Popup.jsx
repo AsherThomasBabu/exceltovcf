@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import ReactGA from "react-ga"; // Import ReactGA for tracking
+import ReactGA from "react-ga4"; // Import ReactGA for tracking
 
 const Popup = ({ excelFilePath }) => {
   const [isOpen, setIsOpen] = useState(true); // Open the modal by default

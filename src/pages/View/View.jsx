@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import ContactNameCustomization from "../FileDownload/ContactNameCustomization";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const View = () => {
   const location = useLocation();
