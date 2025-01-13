@@ -75,8 +75,7 @@ function generateRevField() {
   const minutes = String(now.getUTCMinutes()).padStart(2, "0");
   const seconds = String(now.getUTCSeconds()).padStart(2, "0");
 
-  const revTimestamp = `${year}${month}${day}T${hours}${minutes}${seconds}`;
-  return revTimestamp;
+  return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 }
 
 export default generateFile;

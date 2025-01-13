@@ -10,9 +10,10 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
   const [incrementValue, setIncrementValue] = useState(1);
   const [customizedNames, setCustomizedNames] = useState([]);
   const [data, setData] = useState([...selectedData]);
+  const [localSelectedOptions, setLocalSelectedOptions] = useState([...selectedOptions]);
 
   const handleAddStaticTextChange = (event) => {
-    const checked = event.target.checked;
+    const {checked} = event.target;
     setAddStaticText(checked);
 
     ReactGA.event({
@@ -33,7 +34,7 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
   };
 
   const handleAddIncrementingNumberChange = (event) => {
-    const checked = event.target.checked;
+    const {checked} = event.target;
     setAddIncrementingNumber(checked);
 
     ReactGA.event({
@@ -106,7 +107,7 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
 
   const handleGenerateClick = () => {
     const updatedData = data.map((contact, index) => {
-      let updatedContact = [...contact]; // Create a copy of the current contact
+      let updatedContact = [...contact];
       let prefix = "";
       if (addStaticText) {
         prefix += staticText + " ";
@@ -115,13 +116,15 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
         prefix += startingNumber + index * incrementValue;
       }
 
-      const nameIndex = selectedOptions.indexOf("First Name");
+      const nameIndex = localSelectedOptions.indexOf("First Name");
       if (nameIndex !== -1) {
         // Update the name with the prefix
         updatedContact[nameIndex] = prefix + " " + (contact[nameIndex] || "");
       } else {
-        // No name column, so add it
-        selectedOptions.push("First Name");
+        // No name column, so add it only if it doesn't exist
+        if (!localSelectedOptions.includes("First Name")) {
+          setLocalSelectedOptions(prev => [...prev, "First Name"]);
+        }
         updatedContact.push(prefix);
       }
 
@@ -135,7 +138,7 @@ const ContactNameCustomization = ({ selectedData, selectedOptions }) => {
       value: updatedData.length,
     });
 
-    generateFile(updatedData, selectedOptions); // Generate the file
+    generateFile(updatedData, localSelectedOptions); // Use local copy of options
   };
 
   return (

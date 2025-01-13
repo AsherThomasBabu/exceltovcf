@@ -52,8 +52,6 @@ const Uploader = () => {
           raw: false,
           defval: "",
         });
-        console.log("JSON data:", jsonData);
-        console.log(hasHeader);
         setFileData(jsonData);
         setFileSubmitted(true);
         ReactGA.event({
@@ -97,98 +95,84 @@ const Uploader = () => {
 
   const isFileAllowed = (file) => {
     const allowedTypes = [".xlsx", ".xls", ".csv"];
-    const fileType = file.name
-      .substring(file.name.lastIndexOf("."))
-      .toLowerCase();
+    const fileType = file.name.substring(file.name.lastIndexOf(".")).toLowerCase();
     return allowedTypes.includes(fileType);
   };
 
+  if (fileSubmitted && fileData) {
+    return <Navigate to="/view" state={{ data: fileData, hasHeader }} />;
+  }
+
   return (
-    <div
-      className="flex flex-col items-center justify-center"
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
-    >
-      <div className="flex items-center justify-center w-full">
-        <label
-          htmlFor="dropzone-file"
-          className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 m-10"
-        >
-          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-            <svg
-              aria-hidden="true"
-              className="w-10 h-10 mb-3 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-              ></path>
-            </svg>
-            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className="font-semibold">Click to upload</span> or drag and
-              drop
-            </p>
-            {fileName && (
-              <p className="mb-2 text-sm font-semibold">{fileName}</p>
-            )}
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              XLSX, XLS, CSV (MAX: 1MB)
-            </p>
-            {fileSizeError && (
-              <p className="mt-2 text-sm text-red-500">
-                File size exceeds the limit (1MB).
-              </p>
-            )}
-            {fileTypeError && (
-              <p className="mt-2 text-sm text-red-500">Incorrect file type!</p>
-            )}
-          </div>
-          <input
-            id="dropzone-file"
-            type="file"
-            className="hidden"
-            accept=".xlsx, .xls, .csv"
-            onChange={handleFileUpload}
-          />
-        </label>
+    <div className="flex flex-col items-center space-y-4 w-full max-w-2xl mx-auto">
+      <div
+        className="w-full border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition-colors duration-300"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        onClick={() => document.getElementById("fileInput").click()}
+        data-testid="drop-area"
+      >
+        <input
+          type="file"
+          id="fileInput"
+          accept=".xlsx,.xls,.csv"
+          onChange={handleFileUpload}
+          className="hidden"
+          data-testid="file-input"
+        />
+        <div className="mb-4">
+          <svg
+            className="mx-auto h-12 w-12 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+            />
+          </svg>
+        </div>
+        <p className="text-lg text-gray-600 mb-2">
+          {fileName || "Drop your Excel file here or click to browse"}
+        </p>
+        {fileSizeError && (
+          <p className="text-red-500 text-sm" data-testid="size-error">
+            File size should be less than 1MB
+          </p>
+        )}
+        {fileTypeError && (
+          <p className="text-red-500 text-sm" data-testid="type-error">
+            Only Excel files (.xlsx, .xls) and CSV files are allowed
+          </p>
+        )}
       </div>
-      {selectedFile && !fileSizeError && (
-        <div className="flex flex-col items-center mt-4">
-          <div className="flex items-center">
+
+      {selectedFile && (
+        <div className="flex flex-col items-center space-y-4 w-full">
+          <label className="flex items-center space-x-2">
             <input
-              id="has-header-checkbox"
               type="checkbox"
+              className="form-checkbox"
               checked={hasHeader}
               onChange={handleHasHeaderChange}
-              className="mr-2"
+              data-testid="header-checkbox"
             />
-            <label htmlFor="has-header-checkbox" className="text-sm">
-              Does the file have a header?
-            </label>
-          </div>
+            <span>First row contains headers</span>
+          </label>
           <button
             onClick={handleFileSubmit}
-            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors duration-300"
+            data-testid="upload-button"
           >
-            Process File
+            Upload
           </button>
         </div>
-      )}
-      {fileSubmitted && (
-        <Navigate
-          to="/view"
-          state={{ jsonData: fileData, hasHeader: hasHeader }}
-          replace={true}
-        />
       )}
     </div>
   );
 };
 
-export default Uploader;
+export default Uploader; 
