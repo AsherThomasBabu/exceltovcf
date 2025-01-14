@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ContactButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -7,13 +7,28 @@ const ContactButton = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setIsModalOpen(false);
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      // TODO: Replace 'YOUR_ACCESS_KEY' with your Web3Forms access key
-      // Sign up at https://web3forms.com/ to get your access key
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -49,22 +64,41 @@ const ContactButton = () => {
     }
   };
 
+  const handleModalOpen = (e) => {
+    e.stopPropagation();
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalClick = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={handleModalOpen}
         className="text-slate-950 text-lg hover:text-gray-400 transition-colors"
       >
         Contact
       </button>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4"
+          onClick={handleModalClose}
+        >
+          <div 
+            className="bg-white rounded-lg p-6 max-w-md w-full relative"
+            onClick={handleModalClick}
+          >
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">Contact Us</h2>
               <button
-                onClick={() => setIsModalOpen(false)}
+                onClick={handleModalClose}
                 className="text-gray-500 hover:text-gray-700"
               >
                 ✕
@@ -110,7 +144,7 @@ const ContactButton = () => {
                   className={`w-full py-2 px-4 rounded-md text-white font-medium ${
                     isSubmitting || !feedback
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-blue-500 hover:bg-blue-600'
+                      : 'bg-blue-600 hover:bg-blue-700'
                   }`}
                 >
                   {isSubmitting ? 'Sending...' : 'Send message'}
