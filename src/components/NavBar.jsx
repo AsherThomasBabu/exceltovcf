@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import SmallLogo from "../assets/logo-small.svg";
+import ContactButton from "./FeedbackButton";
 
 const NavBar = () => {
   return (
@@ -38,6 +39,7 @@ const NavBar = () => {
         >
           GitHub
         </a>
+        <ContactButton />
       </div>
     </nav>
   );
