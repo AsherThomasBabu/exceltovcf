@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-ga4": "^2.1.0",
+    "react-helmet": "^6.1.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.14.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz"
