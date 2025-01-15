@@ -1,29 +1,43 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TrackPageView from "../components/TrackPageView";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
+import Privacy from "../pages/Privacy/Privacy";
+import Terms from "../pages/Terms/Terms";
 import View from "../pages/View/View";
 import HowToUse from "../pages/HowToUse/HowToUse";
-import Popup from "../components/Popup";
-import MetaTags from "../components/MetaTags";
 
-const AppRoutes = () => {
-  return (
-    <Router>
-      <MetaTags />
-      <TrackPageView />
-      <MainLayout>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/how-to-use" element={<HowToUse />} />
-          <Route path="/view" element={<View />} />
-        </Routes>
-        <Popup excelFilePath="/Sample Data.xlsx" />
-      </MainLayout>
-    </Router>
-  );
-};
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+      {
+        path: "/terms",
+        element: <Terms />,
+      },
+      {
+        path: "/view",
+        element: <View />,
+      },
+      {
+        path: "/how-to-use",
+        element: <HowToUse />,
+      },
+    ],
+  },
+]);
 
-export default AppRoutes; 
+export default router; 
