@@ -6,8 +6,9 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Excel to VCF Converter - Convert Excel to Contacts</title>
-        <meta name="description" content="Convert your Excel spreadsheets into VCF contact files with a single click. Simple, fast, and secure contact conversion tool." />
+        <title>Excel to VCF Converter - Convert Excel Contacts Online</title>
+        <meta name="description" content="Convert Excel spreadsheets to VCF contact files instantly. Easy bulk contact conversion tool, no registration required. Available for free." />
+        <meta name="keywords" content="Excel to VCF converter, convert Excel to contacts, VCF converter online, bulk contacts export, contact file converter" />
         <noscript>{`
           <h1>Excel to VCF Converter</h1>
           <h2>Convert Excel Spreadsheets into VCF Contact Files</h2>
