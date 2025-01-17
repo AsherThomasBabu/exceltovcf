@@ -10,7 +10,9 @@ const ContactButton = () => {
   // Close modal when clicking outside
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === 'Escape') setIsModalOpen(false);
+      if (e.key === 'Escape') {
+        setIsModalOpen(false);
+      }
     };
 
     if (isModalOpen) {

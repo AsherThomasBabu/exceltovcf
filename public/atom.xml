@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Excel2VCF Sitemap</title>
+    <link href="https://excel2vcf.xyz/"/>
+    <updated>2025-01-17T00:00:00Z</updated>
+    <author>
+        <name>Excel2VCF</name>
+    </author>
+    <id>https://excel2vcf.xyz/</id>
+
+    <entry>
+        <title>Home</title>
+        <link href="https://excel2vcf.xyz/"/>
+        <id>https://excel2vcf.xyz/</id>
+        <updated>2025-01-17T00:00:00Z</updated>
+    </entry>
+
+    <entry>
+        <title>About</title>
+        <link href="https://excel2vcf.xyz/about"/>
+        <id>https://excel2vcf.xyz/about</id>
+        <updated>2025-01-17T00:00:00Z</updated>
+    </entry>
+
+    <entry>
+        <title>How to Use</title>
+        <link href="https://excel2vcf.xyz/how-to-use"/>
+        <id>https://excel2vcf.xyz/how-to-use</id>
+        <updated>2025-01-17T00:00:00Z</updated>
+    </entry>
+
+    <entry>
+        <title>Privacy Policy</title>
+        <link href="https://excel2vcf.xyz/privacy"/>
+        <id>https://excel2vcf.xyz/privacy</id>
+        <updated>2025-01-17T00:00:00Z</updated>
+    </entry>
+
+    <entry>
+        <title>Terms and Conditions</title>
+        <link href="https://excel2vcf.xyz/terms"/>
+        <id>https://excel2vcf.xyz/terms</id>
+        <updated>2025-01-17T00:00:00Z</updated>
+    </entry>
+</feed>
