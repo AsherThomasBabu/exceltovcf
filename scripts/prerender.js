@@ -49,14 +49,19 @@ async function generatePrerenderedPages() {
   const baseHtml = await fs.readFile('index.html', 'utf-8');
   
   for (const page of pages) {
-    // Create SEO-optimized HTML for each page
+    // Skip the homepage - leave it as the React app
+    if (page.path === '/') {
+      continue;
+    }
+    
+    // Create SEO-optimized HTML for other pages
     const seoHtml = baseHtml
       .replace(/<title>.*?<\/title>/, `<title>${page.title}</title>`)
       .replace(/(<meta name="description" content=")[^"]*(")/g, `$1${page.description}$2`)
-      .replace(/(<div id="root"><\/div>)/, `<div id="root">${page.content}<noscript>JavaScript is required for full functionality.</noscript></div>$1`);
+      .replace(/(<div id="root"><\/div>)/, `<div id="root">${page.content}<noscript>JavaScript is required for full functionality.</noscript></div>`);
     
-    // Determine output path
-    const outputPath = page.path === '/' ? 'dist/index.html' : `dist${page.path}.html`;
+    // Generate static pages for SEO landing pages only
+    const outputPath = `dist${page.path}.html`;
     const outputDir = path.dirname(outputPath);
     
     // Ensure directory exists
@@ -66,6 +71,8 @@ async function generatePrerenderedPages() {
     await fs.writeFile(outputPath, seoHtml);
     console.log(`Generated: ${outputPath}`);
   }
+  
+  console.log('✅ Main React app (/) left unchanged for full functionality');
 }
 
 // Run if called directly
