@@ -10,8 +10,31 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff,woff2}'],
+        // Exclude SEO files from precaching completely
+        globIgnores: ['**/sitemap*.xml', '**/robots.txt', '**/atom.xml'],
         cleanupOutdatedCaches: true,
-        skipWaiting: true
+        skipWaiting: true,
+        // Never cache SEO files
+        navigateFallbackDenylist: [/^\/sitemap/, /^\/robots\.txt$/, /^\/atom\.xml$/],
+        runtimeCaching: [
+          {
+            // SEO files always from network
+            urlPattern: /\/(sitemap.*\.xml|robots\.txt|atom\.xml)$/,
+            handler: 'NetworkOnly'
+          },
+          {
+            // Regular assets can be cached
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+              }
+            }
+          }
+        ]
       },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'logo-head.svg'],
       manifest: {
