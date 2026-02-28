@@ -1,4 +1,35 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://excel2vcf.xyz/sitemap.xml 
+# Prioritize important pages for crawling
+Crawl-delay: 1
+
+# Block any temporary or development files
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /src/
+Disallow: /scripts/
+Disallow: /*.json$
+Disallow: /package-lock.json
+Disallow: /vite.config.js
+
+# Allow important assets
+Allow: /logo-head.svg
+Allow: /logo-head.png
+Allow: /favicon.ico
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
+
+# Sitemaps
+Sitemap: https://excel2vcf.xyz/sitemap.xml
+
+# Additional crawl hints for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: / 

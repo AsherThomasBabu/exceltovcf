@@ -1,28 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
   <url>
     <loc>https://excel2vcf.xyz/</loc>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>1</priority>
+    <image:image>
+      <image:loc>https://excel2vcf.xyz/logo-head.png</image:loc>
+      <image:title>Excel to VCF Converter Logo</image:title>
+      <image:caption>Free Excel to VCF contact converter tool</image:caption>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://excel2vcf.xyz/about</loc>
+    <loc>https://excel2vcf.xyz/excel-to-gmail-contacts</loc>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.95</priority>
   </url>
+
+  <url>
+    <loc>https://excel2vcf.xyz/excel-to-iphone-contacts</loc>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://excel2vcf.xyz/csv-to-vcf-converter</loc>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <url>
     <loc>https://excel2vcf.xyz/how-to-use</loc>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <url>
+    <loc>https://excel2vcf.xyz/about</loc>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://excel2vcf.xyz/privacy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
+
   <url>
     <loc>https://excel2vcf.xyz/terms</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-02-28T17:22:34.430Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
-</urlset> 
+
+</urlset>

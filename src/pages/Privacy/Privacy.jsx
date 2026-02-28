@@ -1,6 +1,21 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
 const Privacy = () => {
   return (
-    <div className="max-w-3xl mx-auto py-8">
+    <>
+      <Helmet>
+        <title>Privacy Policy - Excel to VCF Converter</title>
+        <meta name="description" content="Privacy policy for Excel to VCF Converter. Learn how we protect your data with client-side processing and no data storage." />
+        <meta name="keywords" content="privacy policy, data protection, Excel to VCF privacy, contact converter privacy" />
+        <link rel="canonical" href="https://excel2vcf.xyz/privacy" />
+        <meta name="robots" content="noindex, follow" />
+        
+        <meta property="og:title" content="Privacy Policy - Excel to VCF Converter" />
+        <meta property="og:description" content="Our privacy policy explains how Excel to VCF Converter protects your data with client-side processing." />
+        <meta property="og:url" content="https://excel2vcf.xyz/privacy" />
+      </Helmet>
+      <div className="max-w-3xl mx-auto py-8">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
       <div className="prose prose-lg">
         <p className="mb-4">
@@ -48,7 +63,8 @@ const Privacy = () => {
           If you have any questions about our privacy policy, please contact us through our GitHub repository.
         </p>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

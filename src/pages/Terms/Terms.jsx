@@ -1,6 +1,21 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
 const Terms = () => {
   return (
-    <div className="max-w-3xl mx-auto py-8">
+    <>
+      <Helmet>
+        <title>Terms of Service - Excel to VCF Converter</title>
+        <meta name="description" content="Terms of service for Excel to VCF Converter. Free service for converting Excel contacts to VCF format with client-side processing." />
+        <meta name="keywords" content="terms of service, Excel to VCF terms, contact converter terms, service agreement" />
+        <link rel="canonical" href="https://excel2vcf.xyz/terms" />
+        <meta name="robots" content="noindex, follow" />
+        
+        <meta property="og:title" content="Terms of Service - Excel to VCF Converter" />
+        <meta property="og:description" content="Terms of service for using Excel to VCF Converter's free contact conversion service." />
+        <meta property="og:url" content="https://excel2vcf.xyz/terms" />
+      </Helmet>
+      <div className="max-w-3xl mx-auto py-8">
       <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
       <div className="prose prose-lg">
         <p className="mb-4">
@@ -49,7 +64,8 @@ const Terms = () => {
           date at the bottom of this page.
         </p>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

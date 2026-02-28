@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.js",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prerender": "node scripts/prerender.js",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "seo": "npm run sitemap && npm run build",
+    "seo-check": "node scripts/validate-seo.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
@@ -37,6 +41,9 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "vite": "^7.2.4"
+    "terser": "^5.46.0",
+    "vite": "^7.2.4",
+    "vite-plugin-pwa": "^1.2.0",
+    "workbox-window": "^7.4.0"
   }
 }

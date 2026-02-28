@@ -25,6 +25,36 @@ const NavBar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6">
+          <div className="relative group">
+            <button className="text-slate-950 text-lg hover:text-gray-400 transition-colors flex items-center">
+              Converters
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="py-2">
+                <Link
+                  to="/excel-to-gmail-contacts"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Excel to Gmail Contacts
+                </Link>
+                <Link
+                  to="/excel-to-iphone-contacts"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Excel to iPhone Contacts
+                </Link>
+                <Link
+                  to="/csv-to-vcf-converter"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  CSV to VCF Converter
+                </Link>
+              </div>
+            </div>
+          </div>
           <Link
             to="/how-to-use"
             className="text-slate-950 text-lg hover:text-gray-400 transition-colors"
@@ -82,6 +112,30 @@ const NavBar = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-40 border-t">
           <div className="flex flex-col space-y-3 p-4">
+            <div className="border-b border-gray-200 pb-3">
+              <p className="text-sm font-medium text-gray-500 mb-2">Converters</p>
+              <Link
+                to="/excel-to-gmail-contacts"
+                className="block text-slate-950 text-base hover:text-gray-400 transition-colors py-1 pl-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Excel to Gmail Contacts
+              </Link>
+              <Link
+                to="/excel-to-iphone-contacts"
+                className="block text-slate-950 text-base hover:text-gray-400 transition-colors py-1 pl-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Excel to iPhone Contacts
+              </Link>
+              <Link
+                to="/csv-to-vcf-converter"
+                className="block text-slate-950 text-base hover:text-gray-400 transition-colors py-1 pl-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                CSV to VCF Converter
+              </Link>
+            </div>
             <Link
               to="/how-to-use"
               className="text-slate-950 text-lg hover:text-gray-400 transition-colors py-2"

@@ -6,6 +6,9 @@ import Privacy from "../pages/Privacy/Privacy";
 import Terms from "../pages/Terms/Terms";
 import View from "../pages/View/View";
 import HowToUse from "../pages/HowToUse/HowToUse";
+import ExcelToGmail from "../pages/ExcelToGmail/ExcelToGmail";
+import ExcelToIphone from "../pages/ExcelToIphone/ExcelToIphone";
+import CsvToVcf from "../pages/CsvToVcf/CsvToVcf";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
       {
         path: "/how-to-use",
         element: <HowToUse />,
+      },
+      {
+        path: "/excel-to-gmail-contacts",
+        element: <ExcelToGmail />,
+      },
+      {
+        path: "/excel-to-iphone-contacts",
+        element: <ExcelToIphone />,
+      },
+      {
+        path: "/csv-to-vcf-converter",
+        element: <CsvToVcf />,
       },
     ],
   },
