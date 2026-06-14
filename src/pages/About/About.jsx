@@ -94,6 +94,36 @@ const About = () => {
           <li>Apple Contacts (macOS)</li>
           <li>Most email clients and CRM systems</li>
         </ul>
+
+        <h2 className="text-2xl font-semibold mt-8 mb-4">Other free tools</h2>
+        <p className="mb-4">
+          Excel2VCF is part of a small set of independently-built free tools. If you found this one
+          useful, the others might come in handy too:
+        </p>
+        <ul className="list-disc pl-6 mb-6">
+          <li>
+            <a
+              href="https://nameyoursaas.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline"
+            >
+              NameYourSaaS
+            </a>
+            {' '}— an AI-powered SaaS name generator with built-in domain availability checks. Useful when you're naming a new product or sub-brand.
+          </li>
+          <li>
+            <a
+              href="https://consentico.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline"
+            >
+              Consentico
+            </a>
+            {' '}— a free GDPR / CCPA cookie consent banner for Shopify stores. Five-minute install, no theme edits.
+          </li>
+        </ul>
       </div>
       </div>
     </>

@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className={`w-full bg-gray-50 border-t ${isHomePage ? 'mt-[30vh]' : 'mt-auto'}`}>
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-semibold mb-3">Excel to VCF Converter</h3>
             <p className="text-gray-600 text-sm">
@@ -46,6 +46,34 @@ const Footer = () => {
                 <Link to="/terms" className="text-gray-600 hover:text-gray-900 text-sm">
                   Terms of Service
                 </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            {/* Curated outbound links. Plain <a target="_blank"> with
+                rel="noopener noreferrer" — intentionally NO "nofollow" so
+                link equity flows naturally between recommended sites. */}
+            <h3 className="font-semibold mb-3">Other tools</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://nameyoursaas.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900 text-sm"
+                >
+                  NameYourSaaS — name generator
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://consentico.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900 text-sm"
+                >
+                  Consentico — Shopify cookie banner
+                </a>
               </li>
             </ul>
           </div>
