@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.js",
+    "build": "node scripts/generate-sitemap.js && vite build && node scripts/prerender.js",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prerender": "node scripts/prerender.js",
