@@ -115,11 +115,19 @@ async function updateSitemap() {
     console.log('✅ Sitemap updated successfully');
     console.log(`📊 ${pages.length} pages included`);
     console.log(`🕒 Last updated: ${currentDate}`);
-    
+
+    // Also write to sitemap-new.xml — Google Search Console has historically
+    // been fetching this filename successfully (the "main" sitemap.xml has had
+    // intermittent fetch failures in GSC). Keep both in lockstep so whichever
+    // one Google reads, it gets the same freshness signal.
+    await fs.writeFile('public/sitemap-new.xml', sitemapContent);
+    console.log('✅ sitemap-new.xml updated (kept in sync for GSC compatibility)');
+
     // Also update the dist version if it exists
     try {
       await fs.writeFile('dist/sitemap.xml', sitemapContent);
-      console.log('✅ Dist sitemap updated');
+      await fs.writeFile('dist/sitemap-new.xml', sitemapContent);
+      console.log('✅ Dist sitemaps updated');
     } catch (err) {
       console.log('ℹ️ Dist folder not found (this is normal during development)');
     }
